@@ -20,7 +20,7 @@ steps:
     rootFolderOrFile: '$(Build.BinariesDirectory)'
     includeRootFolder: true
     archiveType: 'zip'
-    archiveFile: '$(Build.ArtifactStagingDirectory)/npm/*.zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/npm/$(Build.BuildId).zip'
     replaceExistingArchive: true
 
 - task: CopyFiles@2
