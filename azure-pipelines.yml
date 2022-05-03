@@ -23,6 +23,9 @@ steps:
     archiveFile: '$(Build.ArtifactStagingDirectory)/**/*.zip'
     replaceExistingArchive: true
 
+- upload: $(Build.ArtifactStagingDirectory)/**/*.zip
+  artifact: drop
+
 - task: CopyFiles@2
   inputs:
     Contents: 'build/**' # Pull the build directory (React)
@@ -31,4 +34,4 @@ steps:
 - task: PublishBuildArtifacts@1
   inputs: 
     PathtoPublish: $(Build.ArtifactStagingDirectory) # dist or build files
-    ArtifactName: 'www' # output artifact named www
+    ArtifactName: 'drop' # output artifact named www
