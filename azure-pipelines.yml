@@ -15,20 +15,15 @@ steps:
     npm run build
   displayName: 'npm install and build'
 
-- task: ArchiveFiles@2
-  inputs:
-    rootFolderOrFile: '$(Build.BinariesDirectory)'
-    includeRootFolder: true
-    archiveType: 'zip'
-    archiveFile: '$(Build.ArtifactStagingDirectory)'
-    replaceExistingArchive: true
-
 - task: CopyFiles@2
   inputs:
-    Contents: 'build/**' # Pull the build directory (React)
-    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+    sourceFolder: '$(Build.SourcesDirectory)'
+    contents: '*.zip' 
+    targetFolder: $(Build.ArtifactStagingDirectory)/npm
+  displayName: 'Copy npm package'
 
 - task: PublishBuildArtifacts@1
-  inputs: 
-    PathtoPublish: $(Build.ArtifactStagingDirectory) # dist or build files
-    ArtifactName: 'drop' # output artifact named www
+  inputs:
+    pathtoPublish: '$(Build.ArtifactStagingDirectory)/npm'
+    artifactName: drop
+  displayName: 'Publish drop artifact'
