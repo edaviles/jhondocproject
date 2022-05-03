@@ -19,11 +19,11 @@ steps:
   inputs:
     sourceFolder: '$(Build.SourcesDirectory)'
     contents: '*.zip' 
-    targetFolder: $(Build.ArtifactStagingDirectory)/npm
+    targetFolder: $(Build.ArtifactStagingDirectory)
   displayName: 'Copy npm package'
 
 - task: PublishBuildArtifacts@1
   inputs:
-    pathtoPublish: '$(Build.ArtifactStagingDirectory)/npm'
+    pathtoPublish: '$(Build.ArtifactStagingDirectory)'
     artifactName: drop
   displayName: 'Publish drop artifact'
