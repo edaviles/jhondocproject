@@ -20,11 +20,8 @@ steps:
     rootFolderOrFile: '$(Build.BinariesDirectory)'
     includeRootFolder: true
     archiveType: 'zip'
-    archiveFile: '$(Build.ArtifactStagingDirectory)/**/*.zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)'
     replaceExistingArchive: true
-
-- upload: $(Build.ArtifactStagingDirectory)/**/*.zip
-  artifact: drop
 
 - task: CopyFiles@2
   inputs:
